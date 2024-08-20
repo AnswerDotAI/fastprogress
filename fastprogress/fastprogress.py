@@ -288,7 +288,7 @@ class ConsoleMasterBar(MasterBar):
                 self.names = [name + ' ' * (8-len(name)) if len(name) < 8 else name for name in line]
                 text = '  '.join(self.names)
             else:
-                for (t,name) in zip(line,self.names): text += t + ' ' * (2 + len(name)-len(t))
+                for (t,name) in zip(line,self.names): text += t + ' ' * (2 + len(name)-len(str(t)))
             print_and_maybe_save(text)
         else: print_and_maybe_save(line)
         if self.total_time:

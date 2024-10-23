@@ -38,6 +38,7 @@ class ProgressBar():
     def __iter__(self):
         if self.total != 0: self.update(0)
         try:
+            i = -1
             for i,o in enumerate(self.gen):
                 if self.total and i >= self.total: break
                 yield o

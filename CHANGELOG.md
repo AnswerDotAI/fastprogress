@@ -2,6 +2,13 @@
 
 <!-- do not remove -->
 
+## 1.0.4
+
+### New Features
+
+- Solveit compat ([#113](https://github.com/AnswerDotAI/fastprogress/issues/113))
+
+
 ## 1.0.3
 
 ### New Features

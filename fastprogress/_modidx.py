@@ -3,7 +3,7 @@
 d = { 'settings': { 'branch': 'master',
                 'doc_baseurl': '/',
                 'doc_host': 'https://fastprogress.fast.ai',
-                'git_url': 'https://github.com/fastai/fastprogress/tree/master/',
+                'git_url': 'https://github.com/answerdotai/fastprogress/tree/master/',
                 'lib_path': 'fastprogress'},
   'syms': { 'fastprogress.core': { 'fastprogress.core.format_time': ('core.html#format_time', 'fastprogress/core.py'),
                                    'fastprogress.core.html_progress_bar': ('core.html#html_progress_bar', 'fastprogress/core.py'),

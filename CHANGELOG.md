@@ -2,6 +2,14 @@
 
 <!-- do not remove -->
 
+## 1.0.6
+### Breaking Changes
+
+- Convert to fasthtml and modernize ([#114](https://github.com/AnswerDotAI/fastprogress/issues/114))
+
+
+
+
 ## 1.0.5
 
 ### New Features

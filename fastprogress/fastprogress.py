@@ -191,10 +191,11 @@ class NBProgressBar(ProgressBar):
 # %% ../nbs/01_fastprogress.ipynb
 class NBMasterBar(MasterBar):
     pcls = NBProgressBar
-    def __init__(self, gen, total=None, hide_graph=False, order=None, clean_on_interrupt=False, total_time=False, names = ('train', 'valid')):
+    def __init__(self, gen, total=None, hide_graph=False, order=None, clean_on_interrupt=False, total_time=False,
+            names=('train', 'valid'), hdrs=None):
         super().__init__(gen, NBProgressBar, total)
         if order is None: order = ['pb1', 'text', 'pb2']
-        store_attr('hide_graph,order,clean_on_interrupt,total_time,names')
+        store_attr('hide_graph,order,clean_on_interrupt,total_time,names,hdrs')
         self.report,self.lines,self.text_parts = [],[],[]
         self.inner_dict = dict(pb1=self.main_bar)
         
@@ -202,6 +203,7 @@ class NBMasterBar(MasterBar):
         display(HTML(html_styles))
         self.out = display(Div(html_progress_bar(0, self.main_bar.total, "")), display_id=True)
         self.main_bar._parent_show = self.show
+        if self.hdrs is not None: self.write(self.hdrs, table=True)
 
     def on_interrupt(self):
         if self.clean_on_interrupt: self.out.update(HTML(''))
@@ -218,7 +220,7 @@ class NBMasterBar(MasterBar):
 
     def show(self):
         self.inner_dict['text'] = Div(*self.text_parts)
-        children = [item.progress if item.progress is not None else item for n in self.order
+        children = [getattr(item, 'progress', None) or item for n in self.order
             if (item := self.inner_dict.get(n))]
         self.out.update(Div(*children))
 

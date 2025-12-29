@@ -14,7 +14,7 @@ from warnings import warn
 from fastcore.utils import *
 from fasthtml.common import *
 
-from IPython.display import display,HTML
+from IPython.display import display,HTML,Markdown
 
 # %% ../nbs/01_fastprogress.ipynb
 def format_time(t):
@@ -168,7 +168,7 @@ class NBProgressBar(ProgressBar):
         super().on_iter_begin()
         self.progress = html_progress_bar(0, self.total, "")
         if self.display:
-            display(HTML(html_styles))
+            show_styles()
             self.out = display(self.progress, display_id=True)
         self.is_active=True
 
@@ -200,7 +200,7 @@ class NBMasterBar(MasterBar):
         self.inner_dict = dict(pb1=self.main_bar)
         
     def on_iter_begin(self):
-        display(HTML(html_styles))
+        show_styles()
         self.out = display(Div(html_progress_bar(0, self.main_bar.total, "")), display_id=True)
         self.main_bar._parent_show = self.show
         if self.hdrs is not None: self.write(self.hdrs, table=True)

@@ -2,6 +2,13 @@
 
 <!-- do not remove -->
 
+## 1.1.1
+
+### New Features
+
+- Add `hdrs` ([#115](https://github.com/AnswerDotAI/fastprogress/issues/115))
+
+
 ## 1.1.0
 
 ### Breaking Changes

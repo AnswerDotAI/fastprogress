@@ -2,6 +2,13 @@
 
 <!-- do not remove -->
 
+## 1.1.2
+
+### New Features
+
+- Add `show_styles` ([#116](https://github.com/AnswerDotAI/fastprogress/issues/116))
+
+
 ## 1.1.1
 
 ### New Features

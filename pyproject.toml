@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name="fastprogress"
-requires-python=">=3.6"
+requires-python=">=3.10"
 dynamic = [ "keywords", "description", "version", "dependencies", "optional-dependencies", "readme", "license", "authors", "classifiers", "entry-points", "scripts", "urls"]
 
 [tool.uv]

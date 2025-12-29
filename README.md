@@ -1,6 +1,6 @@
 # fastprogress
 
-A fast and simple progress bar for Jupyter Notebook and console. Created by Sylvain Gugger for fast.ai.
+A fast and simple progress bar for Jupyter Notebook and console.
 
 <img src="https://github.com/fastai/fastprogress/raw/master/images/cifar_train.gif" width="600">
 
@@ -10,11 +10,6 @@ To install simply use
 ```
 pip install fastprogress
 ```
-or:
-```
-conda install -c fastai fastprogress
-```
-Note that this requires python 3.6 or later.
 
 ## Usage
 
@@ -26,16 +21,15 @@ Here is a simple example. Each bar takes an iterator as a main argument, and we 
 - write a line between the two bars with `mb.write('message')`
 
 ``` python
-from fastprogress.fastprogress import master_bar, progress_bar
+from fastprogress.fastprogress import *
 from time import sleep
-mb = master_bar(range(10))
-for i in mb:
-    for j in progress_bar(range(100), parent=mb):
+
+for i in (mb:=master_bar(range(10))):
+    for j in mb.progress(range(100)):
         sleep(0.01)
         mb.child.comment = f'second bar stat'
     mb.main_bar.comment = f'first bar stat'
     mb.write(f'Finished loop {i}.')
-    #mb.update_graph(graphs, x_bounds, y_bounds)
 ```
 
 <img src="https://github.com/fastai/fastprogress/raw/master/images/pb_basic.gif" width="600">
@@ -53,10 +47,8 @@ Additionally, we can give the label of each graph via the command `mb.names` (sh
 
 ``` python
 import numpy as np
-mb = master_bar(range(10))
-mb.names = ['cos', 'sin']
-for i in mb:
-    for j in progress_bar(range(100), parent=mb):
+for i in mb:=master_bar(range(10), names=['cos', 'sin']):
+    for j in mb.progress(range(100)):
         if j%10 == 0:
             k = 100 * i + j
             x = np.arange(0, 2*k*np.pi/1000, 0.01)
@@ -101,17 +93,11 @@ def plot_loss_update(epoch, epochs, mb, train_loss, valid_loss):
 And here is an emulation of a training loop that uses this function:
 
 ```
-from fastprogress.fastprogress import master_bar, progress_bar
-from time import sleep
-import numpy as np
 import random
 
 epochs = 5
-mb = master_bar(range(1, epochs+1))
-# optional: graph legend: if not set, the default is 'train'/'valid'
-# mb.names = ['first', 'second']
 train_loss, valid_loss = [], []
-for epoch in mb:
+for epoch in (mb:=master_bar(range(1, epochs+1))):
     # emulate train sub-loop
     for batch in progress_bar(range(2), parent=mb): sleep(0.2)
     train_loss.append(0.5 - 0.06 * epoch + random.uniform(0, 0.04))
@@ -129,4 +115,5 @@ And the output:
 
 ----
 
-Copyright 2017 onwards, fast.ai. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. A copy of the License is provided in the LICENSE file in this repository.
+Copyright 2017 onwards, fast.ai.
+

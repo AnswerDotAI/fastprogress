@@ -231,7 +231,7 @@ class NBMasterBar(MasterBar):
         self.inner_dict['text'] = Div(*self.text_parts)
         children = [getattr(item, 'progress', None) or item for n in self.order
             if (item := self.inner_dict.get(n))]
-        self.out.update(Div(*children))
+        if hasattr(self, 'out'): self.out.update(Div(*children))
 
     def write(self, line, table=False):
         if table: self.lines.append(line); self.text_parts = [text2html_table(self.lines)]

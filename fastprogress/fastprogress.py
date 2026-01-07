@@ -14,8 +14,6 @@ from warnings import warn
 from fastcore.utils import *
 from fasthtml.common import *
 
-from IPython.display import display,HTML,Markdown
-
 # %% ../nbs/01_fastprogress.ipynb
 def format_time(t):
     "Format `t` (in seconds) to (h):mm:ss"
@@ -165,7 +163,7 @@ class MasterBar(ProgressBar):
 # %% ../nbs/01_fastprogress.ipynb
 if IN_NOTEBOOK:
     try:
-        from IPython.display import clear_output, display, HTML
+        from IPython.display import clear_output, display, HTML, Markdown
         import matplotlib.pyplot as plt
     except:
         warn("Couldn't import ipython display functions, progress bar will use console behavior")

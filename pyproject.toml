@@ -1,11 +1,36 @@
 [build-system]
-requires = ["setuptools>=64.0"]
+requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name="fastprogress"
+dynamic = ["version"]
+description = "A nested progress with plotting options for fastai"
+readme = "README.md"
 requires-python=">=3.10"
-dynamic = [ "keywords", "description", "version", "dependencies", "optional-dependencies", "readme", "license", "authors", "classifiers", "entry-points", "scripts", "urls"]
+license = {text = "Apache-2.0"}
+authors = [{name = "Sylvain Gugger and Jeremy Howard", email = "info@fast.ai"}]
+keywords = ['jupyter', 'notebook', 'progressbar']
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = []
 
-[tool.uv]
-cache-keys = [{ file = "pyproject.toml" }, { file = "settings.ini" }, { file = "setup.py" }]
+[project.urls]
+Repository = "https://github.com/answerdotai/fastprogress/tree/master/"
+Documentation = "https://fastprogress.fast.ai/"
+
+[project.entry-points.nbdev]
+fastprogress = "fastprogress._modidx:d"
+
+[tool.setuptools.dynamic]
+version = {attr = "fastprogress.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["fastprogress"]
+
+[tool.nbdev]
+doc_path = 'docs'
+branch = 'master'
+custom_sidebar = false

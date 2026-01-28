@@ -15,7 +15,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
 ]
-dependencies = []
+dependencies = ["fastcore>=1.10.0","python-fasthtml>=0.12.34"]
 
 [project.urls]
 Repository = "https://github.com/answerdotai/fastprogress/tree/master/"
@@ -29,6 +29,9 @@ version = {attr = "fastprogress.__version__"}
 
 [tool.setuptools.packages.find]
 include = ["fastprogress"]
+
+[project.optional-dependencies]
+dev = ["numpy"]
 
 [tool.nbdev]
 doc_path = 'docs'

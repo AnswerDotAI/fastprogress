@@ -3,7 +3,7 @@
 d = { 'settings': { 'branch': 'master',
                 'doc_baseurl': '/',
                 'doc_host': 'https://fastprogress.fast.ai',
-                'git_url': 'https://github.com/answerdotai/fastprogress/tree/master',
+                'git_url': 'https://github.com/answerdotai/fastprogress',
                 'lib_path': 'fastprogress'},
   'syms': { 'fastprogress.fastprogress': { 'fastprogress.fastprogress.ConsoleMasterBar': ( 'fastprogress.html#consolemasterbar',
                                                                                            'fastprogress/fastprogress.py'),

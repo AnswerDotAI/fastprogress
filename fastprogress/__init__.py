@@ -1,2 +1,3 @@
-__version__ = "1.1.4"
+__version__ = "1.1.5"
+
 from .fastprogress import master_bar, progress_bar, force_console_behavior

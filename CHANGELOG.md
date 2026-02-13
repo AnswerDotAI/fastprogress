@@ -2,6 +2,13 @@
 
 <!-- do not remove -->
 
+## 1.1.5
+
+### Bugs Squashed
+
+- `self.out` not initialised properly ([#118](https://github.com/AnswerDotAI/fastprogress/issues/118))
+
+
 ## 1.1.3
 
 ### New Features

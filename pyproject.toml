@@ -15,7 +15,7 @@ classifiers = ["Natural Language :: English", "Intended Audience :: Developers",
 dependencies = ['fastcore>=1.10.0', 'python-fasthtml>=0.12.34']
 
 [project.urls]
-Repository = "https://github.com/answerdotai/fastprogress/tree/master/"
+Repository = "https://github.com/answerdotai/fastprogress"
 Documentation = "https://fastprogress.fast.ai/"
 
 [project.entry-points.nbdev]

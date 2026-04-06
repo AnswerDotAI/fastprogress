@@ -31,6 +31,7 @@ version = {attr = "fastprogress.__version__"}
 include = ["fastprogress"]
 
 [tool.nbdev]
+allowed_metadata_keys = ['solveit_dialog_mode', 'solveit_ver']
 doc_path = 'docs'
 branch = 'master'
 custom_sidebar = false

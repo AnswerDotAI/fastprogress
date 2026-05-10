@@ -2,6 +2,13 @@
 
 <!-- do not remove -->
 
+## 1.1.6
+
+### New Features
+
+- Lazy imports ([#125](https://github.com/AnswerDotAI/fastprogress/issues/125))
+
+
 ## 1.1.5
 
 ### Bugs Squashed

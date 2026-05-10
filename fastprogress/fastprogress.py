@@ -14,7 +14,6 @@ from warnings import warn
 from fastcore.utils import *
 from fasthtml.common import *
 
-from IPython.display import display,HTML,Markdown
 
 # %% ../nbs/01_fastprogress.ipynb #1ca61d7e
 def format_time(t):
@@ -54,6 +53,7 @@ html_styles = """
 _style_shown = False
 def show_styles():
     "Add the styles to the nb/dialog"
+    from IPython.display import display,HTML
     global _style_shown
     if _style_shown: return
     display(HTML(html_styles))
@@ -162,18 +162,10 @@ class MasterBar(ProgressBar):
     def update(self, val): self.main_bar.update(val)
     def progress(self, *args, **kwargs): return self.pcls(*args, parent=self, **kwargs)
 
-# %% ../nbs/01_fastprogress.ipynb #fa33907a
-if IN_NOTEBOOK:
-    try:
-        from IPython.display import clear_output, display, HTML
-        import matplotlib.pyplot as plt
-    except:
-        warn("Couldn't import ipython display functions, progress bar will use console behavior")
-        IN_NOTEBOOK = False
-
 # %% ../nbs/01_fastprogress.ipynb #b80bcf77
 class NBProgressBar(ProgressBar):
     def on_iter_begin(self):
+        from IPython.display import display
         super().on_iter_begin()
         self.progress = html_progress_bar(0, self.total, "")
         if self.display:
@@ -187,6 +179,7 @@ class NBProgressBar(ProgressBar):
         self.on_iter_end()
 
     def on_iter_end(self):
+        from IPython.display import HTML
         if not self.leave and self.display: self.out.update(HTML(''))
         self.is_active=False
         super().on_iter_end()
@@ -209,15 +202,18 @@ class NBMasterBar(MasterBar):
         self.inner_dict = dict(pb1=self.main_bar)
         
     def on_iter_begin(self):
+        from IPython.display import display
         show_styles()
         self.out = display(Div(html_progress_bar(0, self.main_bar.total, "")), display_id=True)
         self.main_bar._parent_show = self.show
         if self.hdrs is not None: self.write(self.hdrs, table=True)
 
     def on_interrupt(self):
+        from IPython.display import HTML
         if self.clean_on_interrupt: self.out.update(HTML(''))
 
     def on_iter_end(self):
+        import matplotlib.pyplot as plt
         if hasattr(self, 'imgs_fig'): plt.close(); self.imgs_out.update(self.imgs_fig)
         if hasattr(self, 'graph_fig'): plt.close(); self.graph_out.update(self.graph_fig)
         hdr = [P(f'Total time: {format_time(time.time() - self.main_bar.start_t)}')] if self.total_time else []
@@ -242,6 +238,8 @@ class NBMasterBar(MasterBar):
 @patch
 def show_imgs(self:NBMasterBar, imgs, titles=None, cols=4, imgsize=4, figsize=None):
     if self.hide_graph: return
+    from IPython.display import display
+    import matplotlib.pyplot as plt
     rows = len(imgs)//cols if len(imgs)%cols == 0 else len(imgs)//cols + 1
     if figsize is None: figsize = (imgsize*cols, imgsize*rows)
     self.imgs_fig, imgs_axs = plt.subplots(rows, cols, figsize=figsize)
@@ -256,6 +254,8 @@ def show_imgs(self:NBMasterBar, imgs, titles=None, cols=4, imgsize=4, figsize=No
 @patch
 def update_graph(self:NBMasterBar, graphs, x_bounds=None, y_bounds=None, figsize=(6,4)):
     if self.hide_graph: return
+    from IPython.display import display
+    import matplotlib.pyplot as plt
     if not hasattr(self, 'graph_fig'):
         self.graph_fig, self.graph_ax = plt.subplots(1, figsize=figsize)
         self.graph_out = display(self.graph_ax.figure, display_id=True)

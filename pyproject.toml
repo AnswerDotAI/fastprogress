@@ -36,3 +36,6 @@ allowed_cell_metadata_keys = ['solveit_ai']
 doc_path = 'docs'
 branch = 'master'
 custom_sidebar = false
+
+[tool.chkstyle]
+skip_paths = ["_modidx.py"]

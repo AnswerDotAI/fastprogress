@@ -112,5 +112,4 @@ d = { 'settings': { 'branch': 'master',
                                            'fastprogress.fastprogress.show_styles': ( 'fastprogress.html#show_styles',
                                                                                       'fastprogress/fastprogress.py'),
                                            'fastprogress.fastprogress.text2html_table': ( 'fastprogress.html#text2html_table',
-                                                                                          'fastprogress/fastprogress.py')},
-            'fastprogress.version': {}}}
+                                                                                          'fastprogress/fastprogress.py')}}}

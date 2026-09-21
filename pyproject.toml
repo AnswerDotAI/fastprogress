@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=64"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,7 +8,7 @@ dynamic = ["version"]
 description = "A nested progress with plotting options for fastai"
 readme = "README.md"
 requires-python = ">=3.10"
-license = {text = "Apache-2.0"}
+license = "Apache-2.0"
 authors = [{name = "Sylvain Gugger and Jeremy Howard", email = "info@fast.ai"}]
 keywords = ['jupyter', 'notebook', 'progressbar']
 classifiers = ["Natural Language :: English", "Intended Audience :: Developers", "Development Status :: 4 - Beta", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3 :: Only"]
